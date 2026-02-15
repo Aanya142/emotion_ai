@@ -1,0 +1,7 @@
+Dataset/
+dataset_audio/
+RAVDESS/
+*.h5
+*.npy
+__pycache__/
+.DS_Store
