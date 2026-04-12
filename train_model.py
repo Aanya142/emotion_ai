@@ -5,7 +5,7 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
 # Image size
 img_size = 48
-batch_size = 64
+batch_size = 64 
 
 train_path = "dataset/train"
 test_path = "dataset/test"
@@ -45,15 +45,17 @@ model.add(MaxPooling2D(2,2))
 model.add(Flatten())
 model.add(Dense(128, activation='relu'))
 model.add(Dropout(0.5))
-model.add(Dense(7, activation='softmax'))
+model.add(Dense(8, activation='softmax'))
 
-# Compile
+
 model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
 
-# Train
-model.fit(train_data, epochs=15, validation_data=test_data)
 
-# Save model
+model.fit(train_data, epochs=15, validation_data=test_data)
+loss, acc = model.evaluate(test_data)
+print("Test Accuracy:", acc * 100)
+
+
 model.save("emotion_model.h5")
 
 print("Model trained and saved!")
